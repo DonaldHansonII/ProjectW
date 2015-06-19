@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import org.w3c.dom.Document;
@@ -24,21 +25,23 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
+    private String address = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_display_message);
         //Getting message from 'intent'
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
         String current_weather = "";
-        String address = "http://api.openweathermap.org/data/2.5/weather?q="+message+"&mode=xml";
+        address = "http://api.openweathermap.org/data/2.5/weather?q="+message+"&mode=xml";
 
         TextView textView = new TextView(this);
         textView.setId(R.id.result_content_text);
         textView.setTextSize(40);
-        setContentView(textView);
+        //setContentView(textView);
         new getWeatherData().execute(address);
     }
 
@@ -106,11 +109,16 @@ public class DisplayMessageActivity extends AppCompatActivity {
         //Takes in the weather as a string and converts it to Fahrenheit
 
         double newWeather = Double.parseDouble(theWeather);
-        int fTemp = (int) Math.round(((newWeather - 273.15) * 1.80) + 32);
+        int fTemp = (int) (((newWeather - 273.15) * 1.80) + 32);
         return(fTemp);
     }
 
-        @Override
+    public void refreshWeather (View view) {
+        new getWeatherData().execute(address);
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long

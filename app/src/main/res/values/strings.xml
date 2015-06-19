@@ -6,8 +6,9 @@
     <string name="edit_message"> Enter a message </string>
     <string name="result_content_text"> Hello World </string>
     <string name="button_send"> Send </string>
+    <string name="button_refresh"> Refresh </string>
     <string name="title_activity_main"> MainActivity </string>
     <string name="title_activity_display_message">My Message</string>
-
     <string name="hello_world">Hello world!</string>
+
 </resources>

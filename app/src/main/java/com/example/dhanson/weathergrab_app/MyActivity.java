@@ -2,6 +2,7 @@ package com.example.dhanson.weathergrab_app;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 
 
-public class MyActivity extends ActionBarActivity {
+public class MyActivity extends AppCompatActivity {
 
     public final static String EXTRA_MESSAGE = "com.example.dhanson.weathergrab_app.MESSAGE";
 
